@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Love Story ❤️</title>
+    <style>
+        :root {
+            --pink: #FF6B8B;
+            --deep-pink: #FF1493;
+            --rose: #FF69B4;
+            --light-pink: #FFB6C1;
+            --white: #FFF5EE;
+            --gold: #FFD700;
+            --dark-red: #8B0000;
+            --purple: #DA70D6;
+        }
+        
+        body {
+            font-family: 'Georgia', serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, var(--light-pink), var(--white));
+            color: #5A2A27;
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+        
+        /* Floating Hearts Animation */
+        .floating-hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .heart {
+            position: absolute;
+            font-size: 20px;
+            color: var(--deep-pink);
+            opacity: 0.6;
+            animation: float 8s linear infinite;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0) rotate(0deg); opacity: 0.6; }
+            100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+        }
+        
+        header {
+            background: linear-gradient(to right, var(--rose), var(--deep-pink));
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: "❤️";
+            position: absolute;
+            font-size: 100px;
+            opacity: 0.1;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        
+        h1 {
+            font-size: 3rem;
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .tagline {
+            font-style: italic;
+            font-size: 1.2rem;
+            margin-top: 10px;
+        }
+        
+        nav {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        
+        nav li {
+            margin: 0 20px;
+        }
+        
+        nav a {
+            color: var(--dark-red);
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            padding: 5px 10px;
+            border-radius: 20px;
+        }
+        
+        nav a:hover {
+            background-color: var(--rose);
+            color: white;
+            transform: translateY(-3px);
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        
+        .section {
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 40px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+            border: 1px solid rgba(255, 105, 180, 0.2);
+        }
+        
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(255, 105, 180, 0.2);
+        }
+        
+        .section-title {
+            color: var(--deep-pink);
+            font-size: 2rem;
+            margin-bottom: 20px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(to right, var(--rose), var(--gold));
+            margin: 10px auto;
+        }
+        
+        .couple-photo {
+            width: 100%;
+            max-width: 600px;
+            height: 400px;
+            margin: 0 auto;
+            border-radius: 10px;
+            background-size: cover;
+            background-position: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.5s;
+        }
+        
+        .couple-photo:hover {
+            transform: scale(1.02);
+        }
+        
+        .love-quote {
+            font-style: italic;
+            font-size: 1.3rem;
+            text-align: center;
+            color: var(--dark-red);
+            margin: 30px 0;
+            padding: 20px;
+            background: rgba(255, 182, 193, 0.2);
+            border-radius: 10px;
+            border-left: 5px solid var(--rose);
+        }
+        
+        .memory-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .memory-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+        }
+        
+        .memory-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(255, 105, 180, 0.3);
+        }
+        
+        .memory-img {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .memory-caption {
+            padding: 15px;
+            text-align: center;
+            background: linear-gradient(to right, var(--light-pink), white);
+        }
+        
+        .memory-date {
+            color: var(--deep-pink);
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: linear-gradient(to right, var(--rose), var(--deep-pink));
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 20px;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(255, 105, 180, 0.4);
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 105, 180, 0.6);
+        }
+        
+        footer {
+            background: linear-gradient(to right, var(--rose), var(--deep-pink));
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 50px;
+        }
+        
+        .social-links {
+            margin: 20px 0;
+        }
+        
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            margin: 0 10px;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            color: var(--gold);
+            transform: scale(1.2);
+        }
+        
+        /* Heart Beat Animation */
+        .heart-beat {
+            animation: heartbeat 1.5s infinite;
+            display: inline-block;
+        }
+        
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            25% { transform: scale(1.1); }
+            50% { transform: scale(1); }
+            75% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav li {
+                margin: 5px 0;
+            }
+            
+            .memory-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- Floating Hearts Background -->
+    <div class="floating-hearts" id="hearts-container"></div>
+    
+    <header>
+        <h1>Our <span class="heart-beat">❤️</span> Love Story</h1>
+        <p class="tagline">Every moment with you is magical</p>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="#our-story">Our Story</a></li>
+            <li><a href="#memories">Memories</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#love-notes">Love Notes</a></li>
+        </ul>
+    </nav>
+    
+    <div class="container">
+        <section id="our-story" class="section">
+            <h2 class="section-title">How We Met</h2>
+            <div class="couple-photo" style="background-image: url('https://images.unsplash.com/photo-1518199266791-5375a83190b7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+            <p>It was a beautiful day  when our eyes first met. The world seemed to pause as we shared that first conversation, and I knew right then that you were someone special. What started as a simple hello turned into endless talks, laughter, and a connection that grew stronger with each passing day.</p>
+            <div class="love-quote">
+                "In all the world, there is no heart for me like yours. In all the world, there is no love for you like mine." — Maya Angelou
+            </div>
+            <p>From our first date at that cozy little café to our adventures traveling the world together, every moment with you has been a treasure. You make ordinary days extraordinary and difficult days easier just by being by my side.</p>
+            <a href="#memories" class="btn">Relive Our Memories</a>
+        </section>
+        
+        <section id="memories" class="section">
+            <h2 class="section-title">Special Memories</h2>
+            <div class="memory-grid">
+                <div class="memory-card">
+                    <div class="memory-img" style="background-image: url;"></div>
+                    <div class="memory-caption">
+                        <div class="memory-date">June 12, 2022</div>
+                        <p>Our first vacation together</p>
+                    </div>
+                </div>
+                
+                <div class="memory-card">
+                    <div class="memory-img" style="background-image: url;"></div>
+                    <div class="memory-caption">
+                        <div class="memory-date">December 24, 2022</div>
+                        <p>First Christmas together</p>
+                    </div>
+                </div>
+                
+                <div class="memory-card">
+                    <div class="memory-img" style="background-image: url;"></div>
+                    <div class="memory-caption">
+                        <div class="memory-date">February 14, 2023</div>
+                        <p>Valentine's Day surprise</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="gallery" class="section">
+            <h2 class="section-title">Our Gallery</h2>
+            <p>Every picture tells a story of our love. From silly selfies to romantic moments, these are the memories we've created together.</p>
+            <div class="memory-grid">
+                <div class="memory-card">
+                    <div class="memory-img" style="background-image: url();"></div>
+                </div>
+                
+                <div class="memory-card">
+                    <div class="memory-img" style="background-image: url();"></div>
+                </div>
+                
+                <div class="memory-card">
+                    <div class="memory-img" style="background-image: url();"></div>
+                </div>
+            </div>
+            <div class="love-quote">
+                "I saw that you were perfect, and so I loved you. Then I saw that you were not perfect and I loved you even more." — Angelita Lim
+            </div>
+        </section>
+        
+        <section id="love-notes" class="section">
+            <h2 class="section-title">Love Notes</h2>
+            <p>Leave a sweet message for your loved one:</p>
+            <form>
+                <textarea placeholder="Type your love message here..." style="width: 100%; padding: 15px; border-radius: 10px; border: 1px solid var(--rose); min-height: 150px; margin-bottom: 20px;"></textarea>
+                <button type="submit" class="btn">Send Love ❤️</button>
+            </form>
+        </section>
+    </div>
+    
+    <footer>
+        <p>Made with <span class="heart-beat">❤️</span> for you, my love</p>
+        <div class="social-links">
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-pinterest"></i></a>
+            <a href="#"><i class="fas fa-heart"></i></a>
+        </div>
+        <p>© 2023 Our Love Story | Forever Yours | Papimuller</p>
+    </footer>
+
+    <script>
+        // Create floating hearts
+        document.addEventListener('DOMContentLoaded', function() {
+            const container = document.getElementById('hearts-container');
+            const heartCount = 30;
+            
+            for (let i = 0; i < heartCount; i++) {
+                const heart = document.createElement('div');
+                heart.classList.add('heart');
+                heart.innerHTML = '❤️';
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.top = Math.random() * 100 + 'vh';
+                heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
+                heart.style.animationDuration = (Math.random() * 10 + 5) + 's';
+                container.appendChild(heart);
+            }
+            
+            // Add clickable hearts
+            document.addEventListener('click', function(e) {
+                const heart = document.createElement('div');
+                heart.classList.add('heart');
+                heart.innerHTML = '❤️';
+                heart.style.left = e.clientX + 'px';
+                heart.style.top = e.clientY + 'px';
+                heart.style.fontSize = '30px';
+                heart.style.animationDuration = '4s';
+                container.appendChild(heart);
+                
+                // Remove heart after animation
+                setTimeout(() => {
+                    heart.remove();
+                }, 4000);
+            });
+        });
+    </script>
+</body>
+</html>
